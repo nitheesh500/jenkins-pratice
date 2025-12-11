@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("clone"){
             steps{
-                echo "im from clone"
+                echo "im from clone copy"
             }
             
         }
