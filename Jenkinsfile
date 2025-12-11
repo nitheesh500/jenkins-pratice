@@ -1,7 +1,7 @@
 pipeline{
     agent any;
     stages{
-        stage("clone){
+        stage("clone"){
             sh 'echo im from clone'
         }
         stage("build"){
