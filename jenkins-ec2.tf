@@ -1,6 +1,6 @@
 resource "aws_instance" "this" {
   ami                    = "ami-09c813fb71547fc4f" # This is our devops-practice AMI ID
-  vpc_security_group_ids = [aws_security_group.allow_all_docker.id]
+  vpc_security_group_ids = [aws_security_group.allow_all_jenkins.id]
   instance_type          = "t3.small"
 
   user_data = file("jenkins.sh")
