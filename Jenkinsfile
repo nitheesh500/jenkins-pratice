@@ -2,13 +2,21 @@ pipeline{
     agent any;
     stages{
         stage("clone"){
-            sh 'echo im from clone'
+            steps{
+                echo "im from clone"
+            }
+            
         }
         stage("build"){
-            sh 'echo im from build'
+            steps{
+               echo "im from bild"
+            }
         }
         stage("deploy"){
-            sh 'echo im from deply'
+            steps{
+                echo "im from clone"
+            }
+           
         }
     }
 
