@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("clone") {
+            steps {
+                echo "im from clone copy"
+            }
+        }
+
+        stage("build") {
+            steps {
+                echo "im from bild"
+            }
+        }
+
+        stage("deploy") {
+            steps {
+                echo "im from deploy"
+            }
+        }
+    }
+
+    // --------------------------------------------------------------
+    // POST SECTION:
+    // These blocks run AFTER all stages finish.
+    // In real DevOps environments, this is used for:
+    //  - Sending Slack notifications
+    //  - Sending email updates
+    //  - Cleaning workspace folder
+    //  - Uploading logs or artifacts
+    //  - Restarting servers only if deploy succeeded
+    // --------------------------------------------------------------
+    post {
+
+        // ----------------------------------------------------------
+        // ALWAYS:
+        // Runs every time (success, failure, or abort).
+        //
+        // REAL-TIME USE CASES:
+        //  - Clean workspace so next build starts fresh
+        //  - Upload logs to S3 for debugging
+        //  - Stop temporary containers used during pipeline
+        // ----------------------------------------------------------
+        always {
+            echo "i will execute always"
+            // Example real-time:
+            // cleanWs()   // Cleans Jenkins workspace (common in real CI/CD)
+        }
+
+        // ----------------------------------------------------------
+        // SUCCESS:
+        // Runs only when pipeline COMPLETES SUCCESSFULLY.
+        //
+        // REAL-TIME USE CASES:
+        //  - Send SUCCESS notification to Slack team
+        //  - Send email to developers that deployment is done
+        //  - Tag version in Git (ex: v1.2.3)
+        //  - Restart application only after successful deploy
+        // ----------------------------------------------------------
+        success {
+            echo "i will execute only if the pipeline is success"
+            // Example real-time:
+            // mail to: 'team@company.com',
+            //      subject: 'Build Success',
+            //      body: "Pipeline executed successfully!"
+        }
+
+        // ----------------------------------------------------------
+        // FAILURE:
+        // Runs only when ANY stage fails (clone/build/deploy).
+        //
+        // REAL-TIME USE CASES:
+        //  - Send FAILURE alert to DevOps/Dev Slack channel
+        //  - Send email to team with error logs
+        //  - Create Jira ticket automatically
+        //  - Rollback previous version to avoid downtime
+        // ----------------------------------------------------------
+        failure {
+            echo "i will execute only if the pipeline fails"
+        }
+    }
+}
