@@ -1,1 +1,4 @@
-*It is the way of integrating the code from source and create artifact. in between source and creating artifact we need to install dependencies, run unit test cases, scans, etc. instead of this manually we can automate through continus integration process... We are using Jenkins for CI.
+* It is the way of integrating the code from source and create artifact. in between source and creating artifact we need to install dependencies, run unit test cases, scans, etc. instead of this manually we can automate through continus integration process... We are using Jenkins for CI.
+
+# jenkins default password
+* sudo cat /var/lib/jenkins/secrets/initialAdminPassword
